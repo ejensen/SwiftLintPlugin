@@ -9,6 +9,7 @@ struct SwiftLintPlugin: BuildToolPlugin {
                 executable: try context.tool(named: "swiftlint").path,
                 arguments: [
                     "lint",
+                    "--quiet",
                     "--cache-path", "\(context.pluginWorkDirectory)"
                 ]
             )
@@ -27,7 +28,8 @@ extension SwiftLintPlugin: XcodeBuildToolPlugin {
                 executable: try context.tool(named: "swiftlint").path,
                 arguments: [
                     "lint",
-                    "--cache-path", "\(context.pluginWorkDirectory)"
+                    "--quiet",
+                    "--cache-path", "\(context.pluginWorkDirectory)",
                 ]
             )
         ]
