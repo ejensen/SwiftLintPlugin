@@ -11,7 +11,6 @@ struct SwiftLintFixPlugin: CommandPlugin {
 
         try process.run()
         process.waitUntilExit()
-
         if process.terminationReason == .exit, process.terminationStatus == 0 {
             Diagnostics.remark("SwiftLint corrected \(context.package.displayName)")
         } else {
@@ -32,7 +31,7 @@ extension SwiftLintFixPlugin: XcodeCommandPlugin {
         process.arguments = ["--fix"]
         try process.run()
         process.waitUntilExit()
-
+        
         if process.terminationReason == .exit, process.terminationStatus == 0 {
             Diagnostics.remark("SwiftLint corrected \(context.xcodeProject.displayName)")
         } else {
